@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Category\CategoryCreateController;
 use App\Http\Controllers\Admin\Category\CategoryIndexController;
 use App\Http\Controllers\Admin\Main\AdminIndexController;
 use App\Http\Controllers\Main\IndexController;
@@ -27,7 +28,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
     });
 
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
-        Route::get('/', CategoryIndexController::class);
+        Route::get('/',  CategoryIndexController::class)->name('admin.category.index');
+        Route::get('/create',  CategoryCreateController::class)->name('admin.category.create');
     });
 });
 Auth::routes();
