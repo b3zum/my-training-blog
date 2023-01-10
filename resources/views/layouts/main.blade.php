@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset("assets/vendors/font-awesome/css/all.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/vendors/aos/aos.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("plugins/summernote/summernote-bs4.min.css") }}">
     <script src="{{ asset("assets/vendors/jquery/jquery.min.js") }}"></script>
     <script src="{{ asset("assets/js/loader.js") }}"></script>
 </head>
@@ -136,6 +137,11 @@
         </div>
     </div>
 </footer>
+<script src={{ asset("plugins/jquery/jquery.min.js") }}></script>
+<!-- jQuery UI 1.11.4 -->
+<script src={{ asset("plugins/jquery-ui/jquery-ui.min.js") }}></script>
+<script src="{{ asset("plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+<script src="{{ asset("plugins/summernote/summernote-bs4.min.js") }}"></script>
 <script src="{{ asset("assets/vendors/popper.js/popper.min.js") }}"></script>
 <script src="{{ asset("assets/vendors/bootstrap/dist/js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("assets/vendors/aos/aos.js") }}"></script>
