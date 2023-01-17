@@ -25,7 +25,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'post_id' => 'int',
         ];
     }
 }

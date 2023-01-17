@@ -11,10 +11,13 @@ class PostStoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
+        $tagsIds = $data['tag_ids'];
+        unset($data['tag_ids']);
+
         $data['preview_image'] = $request->file('preview_image')->store('uploads', 'public');
         $data['main_image'] = $request->file('main_image')->store('uploads', 'public');
 
-        Post::firstOrCreate($data);
+        Post::firstOrCreate($data)->tags()->attach($tagsIds);
         return redirect()->route('admin.post.index');
     }
 }

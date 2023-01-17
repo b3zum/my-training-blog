@@ -10,7 +10,14 @@ class PostUpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Post $post)
     {
-        $post->update($request->validated());
+        $data = $request->validated();
+        $tagsIds = $data['tag_ids'];
+        unset($data['tag_ids']);
+
+        $data['preview_image'] = $request->file('preview_image')->store('uploads', 'public');
+        $data['main_image'] = $request->file('main_image')->store('uploads', 'public');
+        $post->update($data);
+        $post->tags()->sync($tagsIds);
         return view('admin.posts.show', compact('post'));
     }
 }
