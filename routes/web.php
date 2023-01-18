@@ -22,6 +22,13 @@ use App\Http\Controllers\Admin\Tag\TagIndexController;
 use App\Http\Controllers\Admin\Tag\TagShowController;
 use App\Http\Controllers\Admin\Tag\TagStoreController;
 use App\Http\Controllers\Admin\Tag\TagUpdateController;
+use App\Http\Controllers\Admin\User\UserCreateController;
+use App\Http\Controllers\Admin\User\UserDeleteController;
+use App\Http\Controllers\Admin\User\UserEditController;
+use App\Http\Controllers\Admin\User\UserIndexController;
+use App\Http\Controllers\Admin\User\UserShowController;
+use App\Http\Controllers\Admin\User\UserStoreController;
+use App\Http\Controllers\Admin\User\UserUpdateController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +81,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::get('/edit/{tag}',  TagEditController::class)->name('admin.tag.edit');
         Route::put('/{tag}',  TagUpdateController::class)->name('admin.tag.update');
         Route::delete('/{tag}',  TagDeleteController::class)->name('admin.tag.delete');
+    });
+
+    Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+        Route::get('/',  UserIndexController::class)->name('admin.user.index');
+        Route::get('/create',  UserCreateController::class)->name('admin.user.create');
+        Route::post('/',  UserStoreController::class)->name('admin.user.store');
+        Route::get('/{user}',  UserShowController::class)->name('admin.user.show');
+        Route::get('/edit/{user}',  UserEditController::class)->name('admin.user.edit');
+        Route::put('/{user}',  UserUpdateController::class)->name('admin.user.update');
+        Route::delete('/{user}',  UserDeleteController::class)->name('admin.user.delete');
     });
 });
 Auth::routes();
