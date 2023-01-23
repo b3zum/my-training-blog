@@ -9,12 +9,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="{{ asset("assets/vendors/jquery/jquery.min.js") }}"></script>
+    <script src="{{ asset("assets/js/loader.js") }}"></script>
 </head>
 <body>
     <div id="app">
@@ -32,9 +35,10 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-
+                </div>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                <div class="col-12 d-flex justify-content-between">
+                    <ul class="navbar-nav ms-auto col-12 d-flex justify-content-between">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

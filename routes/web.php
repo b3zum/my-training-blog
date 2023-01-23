@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\User\UserShowController;
 use App\Http\Controllers\Admin\User\UserStoreController;
 use App\Http\Controllers\Admin\User\UserUpdateController;
 use App\Http\Controllers\Main\IndexController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -48,7 +49,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', IndexController::class);
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', AdminIndexController::class);
     });
@@ -93,4 +94,4 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::delete('/{user}',  UserDeleteController::class)->name('admin.user.delete');
     });
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
